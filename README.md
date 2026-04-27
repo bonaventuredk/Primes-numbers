@@ -1,8 +1,8 @@
 # Primes-numbers
 Développement d'un moteur de calcul haute performance (HPC) dédié au dénombrement de nombres premiers sur des plages de données massives.
 
-## Auteur
-Dohemeto Bonaventure K.
+# Auteur
+##Dohemeto Bonaventure K.
 
 -Le projet transpose le crible d'Ératosthène en un environnement distribué en utilisant le framework PETSc et le protocole MPI.
 
