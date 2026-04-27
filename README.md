@@ -35,6 +35,32 @@ Pour planter le décort, considérons juste un code tout simple permettant de li
 Dès que l’on atteint 100 000, le temps de calcul devient rédhibitoire (15 minutes contre 6 secondes pour 10 000).  
 **Ce constat justifie pleinement l’utilisation d’une approche HPC parallèle et distribuée.**
 
+
+---
+```python
+import numpy as np
+
+nombre_max = 100000
+
+def diviseurs(n):
+    divs = []
+    for i in range(1, n + 1):
+        if n % i == 0:
+            divs.append(i)
+    return divs
+
+prime_list = []
+for k in range(2,nombre_max + 1):
+    j = diviseurs(k)     
+    if len(j) == 2:
+        prime_list.append(k)
+        
+
+print(f"Les nombres premiers inférieurs ou égales à {nombre_max} sont: {prime_list}")       
+
+print(f"Il y a {len(prime_list)} nombres premiers inférieurs ou égales à {nombre_max}.\n")    
+
+```
 ---
 
 ## Architecture du projet (à venir)
