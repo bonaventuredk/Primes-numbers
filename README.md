@@ -41,7 +41,7 @@ Pour planter le décort, considérons juste un code tout simple permettant de li
 | 50 000         | ~ 51 s            |
 | 100 000        | ~ 179 s           |
 
-Dès que l’on atteint 100 000, le temps de calcul devient rédhibitoire (15 minutes contre 6 secondes pour 10 000).  
+Dès que l’on atteint 100 000, le temps de calcul devient plus important. L'idéal est de pouvoir simuler pour des nombres vraiment grands.  
 **Ce constat justifie pleinement l’utilisation d’une approche HPC parallèle et distribuée.**
 
 
