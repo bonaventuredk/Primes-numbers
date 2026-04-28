@@ -25,6 +25,9 @@ Pour planter le décort, considérons juste un code tout simple permettant de li
 - 16 Go RAM  
 - AMD Ryzen 7 7730U with Radeon Graphics – 16 CPU ~ 2 GHz  
 
+![Photo1](Figure_1.png)
+![Photo2](Figure_2.png)
+
 **Temps d’exécution observé** :
 
 | Nombre maximum | Temps d'exécution |
