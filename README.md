@@ -29,7 +29,13 @@ Pour planter le décort, considérons juste un code tout simple permettant de li
 
 | Nombre maximum | Temps d'exécution |
 |----------------|-------------------|
+| 10             | ~ 6 secondes      |
+| 100            | ~ 6 secondes      |
+| 1 000          | ~ 6 secondes      |
 | 10 000         | ~ 6 secondes      |
+| 20 000         | ~ 6 secondes      |
+| 30 000         | ~ 15 minutes      |
+| 50 000         | ~ 15 minutes      |
 | 100 000        | ~ 15 minutes      |
 
 Dès que l’on atteint 100 000, le temps de calcul devient rédhibitoire (15 minutes contre 6 secondes pour 10 000).  
@@ -39,8 +45,12 @@ Dès que l’on atteint 100 000, le temps de calcul devient rédhibitoire (15 
 ---
 ```python
 import numpy as np
+import time
+import matplotlib.pyplot as plt
 
-nombre_max = 100000
+debut = time.time()
+#nombre_max = 50000
+liste_temps =  [10, 100, 1000, 10000, 20000, 30000, 50000]
 
 def diviseurs(n):
     divs = []
@@ -49,16 +59,39 @@ def diviseurs(n):
             divs.append(i)
     return divs
 
-prime_list = []
-for k in range(2,nombre_max + 1):
-    j = diviseurs(k)     
-    if len(j) == 2:
-        prime_list.append(k)
-        
+liste_valeur = []
+liste_nombre = []
+for nombre_max in liste_temps:
+    prime_list = []
+    for k in range(2,nombre_max + 1):
+        j = diviseurs(k)     
+        if len(j) == 2:
+            prime_list.append(k)
+    end = time.time()
+    temps = end - debut
+    liste_valeur.append(temps)
+    print(f"Les nombres premiers inférieurs ou égales à {nombre_max} sont: {prime_list}")       
 
-print(f"Les nombres premiers inférieurs ou égales à {nombre_max} sont: {prime_list}")       
+    print(f"Il y a {len(prime_list)} nombres premiers inférieurs ou égales à {nombre_max}.\n")    
+    liste_nombre.append(len(prime_list))
+    print(f"Temps total: {temps}")
 
-print(f"Il y a {len(prime_list)} nombres premiers inférieurs ou égales à {nombre_max}.\n")    
+plt.figure(figsize=(8, 5))
+plt.plot(liste_temps, liste_valeur, "b-", linewidth=2)
+plt.xlabel("Nombre max")
+plt.ylabel("Durée")
+plt.legend()
+plt.title("Durée par rapport au nombre_max")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.plot(liste_temps, liste_nombre, "r-", linewidth=2)
+plt.xlabel("Nombre_max")
+plt.ylabel("Nombre de nombres premiers trouvés")
+plt.legend()
+plt.title("Nombre de nombre premiers avant Nombre_max")
+plt.show()
+
 
 ```
 ---
