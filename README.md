@@ -32,14 +32,14 @@ Pour planter le décort, considérons juste un code tout simple permettant de li
 
 | Nombre maximum | Temps d'exécution |
 |----------------|-------------------|
-| 10             | ~ 6 secondes      |
-| 100            | ~ 6 secondes      |
-| 1 000          | ~ 6 secondes      |
-| 10 000         | ~ 6 secondes      |
-| 20 000         | ~ 6 secondes      |
-| 30 000         | ~ 15 minutes      |
-| 50 000         | ~ 15 minutes      |
-| 100 000        | ~ 15 minutes      |
+| 10             | ~ 0.000008 s      |
+| 100            | ~ 0.000172 s      |
+| 1 000          | ~ 0.012303 s      |
+| 10 000         | ~ 1.356 s         |
+| 20 000         | ~ 5.6 s           |
+| 30 000         | ~ 25 s            |
+| 50 000         | ~ 51 s            |
+| 100 000        | ~ 179 s           |
 
 Dès que l’on atteint 100 000, le temps de calcul devient rédhibitoire (15 minutes contre 6 secondes pour 10 000).  
 **Ce constat justifie pleinement l’utilisation d’une approche HPC parallèle et distribuée.**
