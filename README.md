@@ -16,6 +16,7 @@ Développement d'un moteur de calcul haute performance (HPC) dédié au dénombr
 
     Outils : Python/C++, PETSc, MPI, Scibian.
 
+
 # Introduction
 Pour planter le décort, considérons juste un code tout simple permettant de lister les nombres premiers inférieurs ou égales à un nombre fixé. Nous fixerons ce nombre respectivement à 100, 1000, 10000 et 100000 pour nos simulations (de base). 
 
