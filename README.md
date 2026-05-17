@@ -115,7 +115,7 @@ plt.show()
 
 Pour améliorer les performances, nous avons utilisé **Numba**, un compilateur *Just‑In‑Time* permettant d’optimiser les boucles Python et d’obtenir des vitesses proches du C.
 
-Pour cette première version, on peut souligner l'utilisation d'une forme non vectorisé du code (avec la présence d'une boucle for à l'intérieur d'une autre). Une version vectorisé sera utilisé dans la suite de notre présentation. 
+Pour cette première version, on peut souligner l'utilisation d'une forme non vectorisé du code (avec la présence d'une boucle for à l'intérieur d'une autre). Une version vectorisée sera utilisée dans la suite de notre présentation.
 
 ### Temps d’exécution observé (version Numba)
 
@@ -129,6 +129,7 @@ Pour cette première version, on peut souligner l'utilisation d'une forme non ve
 | 30 000         | ~ 2.38 s       |
 | 50 000         | ~ 6,584 s       |
 | 100 000        | ~ 23,318 s       |
+![Photo3](dim1.png)
 
 ### Analyse
 
