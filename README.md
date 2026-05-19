@@ -133,7 +133,7 @@ Pour cette première version, on peut souligner l'utilisation d'une forme non ve
 
 ### Analyse
 
-L’accélération est spectaculaire : plusieurs ordres de grandeur plus rapide que la version Python naïve.  
+L’accélération est beaucoup plus élevée : plusieurs ordres de grandeur plus rapide que la version Python naïve.  
 Cependant, même avec Numba, la complexité algorithmique finit par dominer pour des bornes très grandes.
 Par exemple pour 1 000 000 , on constate une lenteur atroce de l'algorithme.
 
