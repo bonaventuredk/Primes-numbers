@@ -200,4 +200,26 @@ plt.title("Nombre de nombres premiers avant Nombre_max")
 plt.show()
 ```
 
+## Partitionnement de l’intervalle de recherche en sous‑domaines
+
+Pour passer à l’échelle, nous découpons l’intervalle `[2, N_max]` en **sous‑intervalles disjoints** confiés chacun à un processus MPI différent. Chaque processus applique un **crible segmenté** sur son bloc, en utilisant la liste des petits premiers (≤ √N_max) qui est diffusée à tous.
+
+### Stratégie de découpage
+
+Soit `P` le nombre de processus. Le nombre total d’entiers à traiter est `N_max - 1`.  
+Un découpage par blocs contigus (dit *block distribution*) est utilisé :
+
+- Taille de base : `base = (N_max - 1) // P`
+- Reste : `reste = (N_max - 1) % P`
+
+Les `reste` premiers processus reçoivent un élément supplémentaire.  
+Pour un processus de rang `r` :
+
+```python
+if r < reste:
+    debut = 2 + r * (base + 1)
+    fin = debut + base
+else:
+    debut = 2 + r * base + reste
+    fin = debut + base - 1
 ---
