@@ -216,15 +216,6 @@ Les `reste` premiers processus reçoivent un élément supplémentaire.
 Pour un processus de rang `r` :
 
 ```python
-if r < reste:
-    debut = 2 + r * (base + 1)
-    fin = debut + base
-else:
-    debut = 2 + r * base + reste
-    fin = debut + base - 1
-
-### Code complet (avec MPI)
-
 ---
 ```python
 #!/usr/bin/env python3
@@ -304,3 +295,89 @@ if __name__ == "__main__":
     
 ```
 ---
+# Résultats expérimentaux
+
+Les tests ont été réalisés sur :
+
+- AMD Ryzen 7 7730U
+- 16 Go de RAM
+- Python 3 + mpi4py
+- Implémentation du crible segmenté
+
+## Résultats obtenus
+
+| Nombre maximum | Nombre de nombres premiers | Temps maximal |
+|----------------|---------------------------|---------------|
+| 10 000         | 1 229                     | ~0.000 s       |
+| 100 000        | 9 592                     | 0.019 s       |
+| 1 000 000      | 78 498                    | 0.187 s       |
+| 10 000 000     | 664 579                   | 2.040 s       |
+| 100 000 000    | 5 761 455                 | 23.092 s      |
+
+## Exemples de sorties
+
+### N = 10 000
+
+```text
+N = 10000 : 1229 nombres premiers
+Temps maximal sur un processus : 0.0000000000 s
+Derniers premiers :
+[9887, 9901, 9907, 9923, 9929, 9931, 9941, 9949, 9967, 9973]
+```
+
+### N = 100 000
+
+```text
+N = 100000 : 9592 nombres premiers
+Temps maximal sur un processus : 0.0190010071 s
+Derniers premiers :
+[99877, 99881, 99901, 99907, 99923, 99929, 99961, 99971, 99989, 99991]
+```
+
+### N = 1 000 000
+
+```text
+N = 1000000 : 78498 nombres premiers
+Temps maximal sur un processus : 0.1865553856 s
+Derniers premiers :
+[999863, 999883, 999907, 999917, 999931, 999953, 999959, 999961, 999979, 999983]
+```
+
+### N = 10 000 000
+
+```text
+N = 10000000 : 664579 nombres premiers
+Temps maximal sur un processus : 2.0395517349 s
+Derniers premiers :
+[9999889, 9999901, 9999907, 9999929, 9999931, 9999937, 9999943, 9999971, 9999973, 9999991]
+```
+
+### N = 100 000 000
+
+```text
+N = 100000000 : 5761455 nombres premiers
+Temps maximal sur un processus : 23.0915534496 s
+Derniers premiers :
+[99999787, 99999821, 99999827, 99999839, 99999847,
+99999931, 99999941, 99999959, 99999971, 99999989]
+```
+
+## Analyse
+
+L'utilisation du crible segmenté change radicalement les performances du calcul :
+
+| Méthode | Temps pour N = 100 000 |
+|----------|----------------------|
+| Python naïf | ~179 s |
+| Python + Numba | ~23 s |
+| Crible segmenté | ~0.019 s |
+
+On observe une amélioration de plusieurs ordres de grandeur par rapport à l'approche initiale basée sur les tests de divisibilité.
+
+L'algorithme permet désormais de traiter :
+
+- 1 million d'entiers en moins de 0.2 seconde ;
+- 10 millions d'entiers en environ 2 secondes ;
+- 100 millions d'entiers en environ 23 secondes.
+
+Ces résultats valident l'intérêt du crible segmenté comme base pour une future version HPC distribuée utilisant MPI et PETSc.
