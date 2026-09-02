@@ -30,7 +30,7 @@ def main():
     rank = comm.Get_rank()
     size = comm.Get_size()
 
-    N = 1_000_000
+    N = 1_000_000_000
     if len(sys.argv) > 1:
         N = int(sys.argv[1])
 

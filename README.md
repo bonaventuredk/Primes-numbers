@@ -4,10 +4,6 @@ Développement d'un moteur de calcul haute performance (HPC) dédié au dénombr
 # Auteur
 ## Dohemeto Bonaventure K.
 
--Le projet transpose le crible d'Ératosthène en un environnement distribué en utilisant le framework PETSc et le protocole MPI.
-
--Points clés :
-
     Calcul Parallèle : Segmentation de l'espace de recherche via des vecteurs distribués (Vec MPI) pour lever les barrières de mémoire RAM.
 
     Optimisation HPC : Gestion fine de la localité du cache et réduction des coûts de communication inter-nœuds.
@@ -17,14 +13,36 @@ Développement d'un moteur de calcul haute performance (HPC) dédié au dénombr
     Outils : Python/C++, PETSc, MPI, Scibian.
 
 
+**Prérequis**
+
+- macOS (Apple Silicon recommandé pour reproduire l'environnement M5)
+- Python 3 installé (`python3`)
+
+Vérifiez l'architecture et la version Python avant d'exécuter les tests :
+
+```bash
+uname -m        # doit renvoyer "arm64" sur Mac M5
+python3 -V      # version de Python utilisée
+```
+
+**Comment relancer les tests**
+
+Dans la racine du dépôt, lancez les scripts de test présents dans le
+dossier `Codes/` :
+
+```bash
+python3 Codes/code0.py
+python3 Codes/code1.py
+python3 Codes/code2.py
+```
+
 # Introduction
 Pour planter le décort, considérons juste un code tout simple permettant de lister les nombres premiers inférieurs ou égales à un nombre fixé. Nous fixerons ce nombre respectivement à 100, 1000, 10000 et 100000 pour nos simulations (de base). 
 
 ## Performances sur une machine standard
 
 **Configuration matérielle** :  
-- 16 Go RAM  
-- AMD Ryzen 7 7730U with Radeon Graphics – 16 CPU ~ 2 GHz  
+Macbook air Apple Silicon M5
 
 ![Photo1](Figure_1.png)
 ![Photo2](Figure_2.png)
@@ -299,10 +317,7 @@ if __name__ == "__main__":
 
 Les tests ont été réalisés sur :
 
-- AMD Ryzen 7 7730U
-- 16 Go de RAM
-- Python 3 + mpi4py
-- Implémentation du crible segmenté
+Macbook Air Apple Silicon M5.
 
 ## Résultats obtenus
 
